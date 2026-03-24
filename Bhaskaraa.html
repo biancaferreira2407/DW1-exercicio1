@@ -16,8 +16,6 @@
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
-
-            /* Fundo degradê pastel */
             background: linear-gradient(to right, #f8c8dc, #d8b4f8, #b4d4f8);
         }
 
@@ -30,43 +28,51 @@
             position: relative;
         }
 
-        /* Desenhos desordenados e coloridos */
-        .container::before {
-            content: "✿ ✦ ❀ ✧ ✿ ✦ ❀";
+        .corner {
             position: absolute;
-            top: -18px;
-            left: 5px;
-            font-size: 20px;
-            letter-spacing: 5px;
-            color: #ec4899; /* rosa */
+            font-size: 22px;
+            letter-spacing: 3px;
         }
 
-        .container::after {
-            content: "✧ ❀ ✦ ✿ ✧ ❀ ✦";
-            position: absolute;
-            bottom: -18px;
-            right: 5px;
-            font-size: 20px;
-            letter-spacing: 5px;
-            color: #3b82f6; /* azul */
-        }
+        .top-left { top: -15px; left: -10px; }
+        .top-right { top: -15px; right: -10px; }
+        .bottom-left { bottom: -15px; left: -10px; }
+        .bottom-right { bottom: -15px; right: -10px; }
+
+        .azul { color: #3b82f6; }
+        .rosa { color: #ec4899; }
 
         h1 {
             font-family: 'Cinzel', serif;
             font-size: 34px;
-            color: #1e3a8a; /* azul mais claro que antes */
+            color: #1e3a8a;
             margin-bottom: 10px;
         }
 
         p, label {
-            color: #1e3a8a; /* azul marinho mais claro */
+            color: #1e3a8a;
+        }
+
+        .formula {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin: 15px 0;
+            flex-wrap: wrap;
         }
 
         input[type="number"] {
-            margin: 5px;
-            padding: 6px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
+            width: 60px;
+            padding: 8px;
+            border-radius: 0;
+            border: 2px solid #7c3aed;
+            outline: none;
+            text-align: center;
+        }
+
+        input[type="number"]:focus {
+            border-color: #4c1d95;
         }
 
         input[type="button"] {
@@ -80,15 +86,22 @@
             font-weight: bold;
         }
 
-        input[type="button"]:hover {
-            opacity: 0.9;
+        /* ✨ ANIMAÇÃO DE PISCAR */
+        @keyframes piscar {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .piscar {
+            animation: piscar 0.3s ease 2;
         }
 
         #saida {
             display: block;
             margin-top: 15px;
             font-weight: bold;
-            color: #4c1d95; /* roxo mais escuro */
+            color: #4c1d95;
             font-size: 18px;
         }
     </style>
@@ -96,23 +109,34 @@
 
 <body>
     <div class="container">
+        <!-- Cantos -->
+        <div class="corner top-left">
+            <span class="azul">✿</span><span class="rosa">✦</span><span class="azul">❀</span>
+        </div>
+        <div class="corner top-right">
+            <span class="rosa">✧</span><span class="azul">❀</span><span class="rosa">✦</span>
+        </div>
+        <div class="corner bottom-left">
+            <span class="azul">✦</span><span class="rosa">✿</span><span class="azul">✧</span>
+        </div>
+        <div class="corner bottom-right">
+            <span class="rosa">❀</span><span class="azul">✧</span><span class="rosa">✿</span>
+        </div>
+
         <h1>Bhaskara</h1>
         <p>a.x² + b.x + c</p>
 
-        <label for="A">A</label><br>
-        <input type="number" id="A"><br>
+            <input type="number" id="A" placeholder="a">
+            <input type="number" id="B" placeholder="b">
+            <input type="number" id="C" placeholder="c">
+            <br>
 
-        <label for="B">B</label><br>
-        <input type="number" id="B"><br>
-
-        <label for="C">C</label><br>
-        <input type="number" id="C"><br>
-
-        <input type="button" value="Calcular" onclick="fbhaskara()"><br>
+        <input type="button" value="Calcular" onclick="animarBotao(this)">
 
         <span id="saida">...</span>
     </div>
 
     <script src="./bhaskara.js"></script>
+
 </body>
 </html>

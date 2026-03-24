@@ -11,3 +11,13 @@ function fbhaskara(){
     document.getElementById("saida").innerHTML= "x1 = "+r+"</br>"+"x2 = "+rr ;
 }
 }
+
+function animarBotao(botao) {
+    botao.classList.add("piscar");
+
+    setTimeout(() => {
+        botao.classList.remove("piscar");
+    }, 600);
+
+    fbhaskara(); // chama sua função normal
+}
