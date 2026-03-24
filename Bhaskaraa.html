@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhaskara</title>
+
+    <!-- Fonte medieval -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+
+            /* Fundo degradê pastel */
+            background: linear-gradient(to right, #f8c8dc, #d8b4f8, #b4d4f8);
+        }
+
+        .container {
+            background-color: #f3e8ff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        /* Desenhos desordenados e coloridos */
+        .container::before {
+            content: "✿ ✦ ❀ ✧ ✿ ✦ ❀";
+            position: absolute;
+            top: -18px;
+            left: 5px;
+            font-size: 20px;
+            letter-spacing: 5px;
+            color: #ec4899; /* rosa */
+        }
+
+        .container::after {
+            content: "✧ ❀ ✦ ✿ ✧ ❀ ✦";
+            position: absolute;
+            bottom: -18px;
+            right: 5px;
+            font-size: 20px;
+            letter-spacing: 5px;
+            color: #3b82f6; /* azul */
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 34px;
+            color: #1e3a8a; /* azul mais claro que antes */
+            margin-bottom: 10px;
+        }
+
+        p, label {
+            color: #1e3a8a; /* azul marinho mais claro */
+        }
+
+        input[type="number"] {
+            margin: 5px;
+            padding: 6px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="button"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #7c3aed;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="button"]:hover {
+            opacity: 0.9;
+        }
+
+        #saida {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #4c1d95; /* roxo mais escuro */
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bhaskara</h1>
+        <p>a.x² + b.x + c</p>
+
+        <label for="A">A</label><br>
+        <input type="number" id="A"><br>
+
+        <label for="B">B</label><br>
+        <input type="number" id="B"><br>
+
+        <label for="C">C</label><br>
+        <input type="number" id="C"><br>
+
+        <input type="button" value="Calcular" onclick="fbhaskara()"><br>
+
+        <span id="saida">...</span>
+    </div>
+
+    <script src="./bhaskara.js"></script>
+</body>
+</html>
